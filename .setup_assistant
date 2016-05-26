@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: allegro_kuka_description
+    relative_path: models/allegro_kuka_temp.urdf
+  SRDF:
+    relative_path: config/LWR.srdf
+  CONFIG:
+    generated_timestamp: 1464168377

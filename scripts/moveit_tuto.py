@@ -76,7 +76,12 @@ def move_group_python_interface_tutorial():
     # arm.
     # group = moveit_commander.MoveGroupCommander("left_arm")
     group = moveit_commander.MoveGroupCommander("main")
+    group.set_planner_id("RRTConnectkConfigDefault")
+    # group.set_planner_id("RRTstarkConfigDefault")
+    group.set_planning_time(5)
+    group.set_num_planning_attempts(100)
 
+    # group.set_planner_id("TRRTkConfigDefault")
     # We create this DisplayTrajectory publisher which is used below to publish
     # trajectories for RVIZ to visualize.
     display_trajectory_publisher = rospy.Publisher(
@@ -97,15 +102,44 @@ def move_group_python_interface_tutorial():
     print "============"
     group.set_start_state_to_current_state()
 
-    for i in range(0,20):
-        group.shift_pose_target(2, -0.1)
+    for i in range(0, 20):
+
+        ## VA
+        group.shift_pose_target(2, -0.2)
         plan = group.plan()
+        ## VB
+
+        # waypoints = []
+
+        # # start with the current pose
+        # waypoints.append(group.get_current_pose().pose)
+
+        # # first orient gripper and move forward (+x)
+        # wpose = geometry_msgs.msg.Pose()
+        # wpose.orientation = waypoints[0].orientation
+
+        # wpose.position.x = waypoints[0].position.x
+        # wpose.position.y = waypoints[0].position.y
+        # wpose.position.z = waypoints[0].position.z - 0.2
+        # waypoints.append(copy.deepcopy(wpose))
+
+    
+        # # third move to the side
+        # wpose.position.y += 0.05
+        # waypoints.append(copy.deepcopy(wpose))
+
+        # We want the cartesian path to be interpolated at a resolution of 1 cm
+        # which is why we will specify 0.01 as the eef_step in cartesian
+        # translation.  We will specify the jump threshold as 0.0, effectively
+        # disabling it.
+        # (plan3, fraction) = group.compute_cartesian_path(
+        #     waypoints,   # waypoints to follow
+        #     0.04,        # eef_step
+        #     0.00)         # jump_threshold
 
         print "============ Waiting while RVIZ displays plan2..."
-        rospy.sleep(1)
+        rospy.sleep(5)
         print "============ Waiting while RVIZ displays plan2b..."
-
-
 
     # Adding/Removing Objects and Attaching/Detaching Objects
     # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -120,6 +154,6 @@ def move_group_python_interface_tutorial():
 if __name__ == '__main__':
     try:
 
-      move_group_python_interface_tutorial()
+        move_group_python_interface_tutorial()
     except rospy.ROSInterruptException:
         pass

@@ -2,7 +2,7 @@
 
 <!-- PB HERE, what is this ? -->
   <!-- Set the param that trajectory_execution_manager needs to find the controller plugin -->
-  <arg name="moveit_sensor_manager" default="lwr_moveit_sensor_manager/Pr2MoveItSensorManager" />
+  <!-- <arg name="moveit_sensor_manager" default="lwr_moveit_sensor_manager/Pr2MoveItSensorManager" /> -->
 
   <!-- Set the file describing which sensor(s) to use to build the octomap  -->
   <arg name="moveit_octomap_sensor_params_file" default="$(find lwr_moveit_config)/config/sensors_pcl.yaml" />
@@ -14,13 +14,14 @@
 
   <!-- Params are specific to this plugin -->
 
-  <arg name="head_pointing_frame" default="/head_mount_kinect_rgb_optical_frame" />
-  <param name="head_pointing_frame" value="$(arg head_pointing_frame)" />
+  <!-- <arg name="head_pointing_frame" default="/head_mount_kinect_rgb_optical_frame" /> -->
+  <!-- <param name="head_pointing_frame" value="$(arg head_pointing_frame)" /> -->
 
   <!-- Params for the octomap monitor -->
   
-  <param name="octomap_frame" type="string" value="world" />
-  <param name="octomap_resolution" type="double" value="0.025" />
+  <!-- <param name="octomap_frame" type="string" value="world" /> -->
+  <!-- <param name="octomap_resolution" type="double" value="0.025" /> -->
+  <param name="octomap_resolution" type="double" value="0.01" />
   <param name="max_range" type="double" value="5.0" />
   
   <!-- sensors used to update the map -->

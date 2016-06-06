@@ -5,7 +5,7 @@
   <!-- <arg name="moveit_sensor_manager" default="lwr_moveit_sensor_manager/Pr2MoveItSensorManager" /> -->
 
   <!-- Set the file describing which sensor(s) to use to build the octomap  -->
-  <arg name="moveit_octomap_sensor_params_file" default="$(find lwr_moveit_config)/config/sensors_pcl.yaml" />
+  <arg name="moveit_octomap_sensor_params_file" default="$(find allegro_kuka_moveit_config)/config/sensors_pcl.yaml" />
 
   <!--
       Disable for now, as this package is not yet catkinized (dry deps)

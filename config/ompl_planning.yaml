@@ -9,7 +9,9 @@ planner_configs:
   LBKPIECEkConfigDefault:
     type: geometric::LBKPIECE
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    # range: 0.1  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
     border_fraction: 0.9  # Fraction of time focused on boarder default: 0.9
+    # border_fraction: 0.1  # Fraction of time focused on boarder default: 0.9
     min_valid_path_fraction: 0.5  # Accept partially valid moves above fraction. default: 0.5
   BKPIECEkConfigDefault:
     type: geometric::BKPIECE
@@ -31,7 +33,8 @@ planner_configs:
   RRTConnectkConfigDefault:
     type: geometric::RRTConnect
     # range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
-    range: 0.35  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    # range: 0.35  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    range: 0.55  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
   RRTstarkConfigDefault:
     type: geometric::RRTstar
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
@@ -53,6 +56,37 @@ planner_configs:
     max_nearest_neighbors: 10  # use k nearest neighbors. default: 10
   PRMstarkConfigDefault:
     type: geometric::PRMstar
+
+  RRTstarkConfigDefault1:
+    type: geometric::RRTstar
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    goal_bias: 0.05  # When close to goal select goal, with this probability? default: 0.05
+    delay_collision_checking: 1  # Stop collision checking as soon as C-free parent found. default 1
+    optimization: 1
+  RRTstarkConfigDefault2:
+    type: geometric::RRTstar
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    goal_bias: 0.05  # When close to goal select goal, with this probability? default: 0.05
+    delay_collision_checking: 1  # Stop collision checking as soon as C-free parent found. default 1
+    optimization: 2
+  RRTstarkConfigDefault3:
+    type: geometric::RRTstar
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    goal_bias: 0.05  # When close to goal select goal, with this probability? default: 0.05
+    delay_collision_checking: 1  # Stop collision checking as soon as C-free parent found. default 1
+    optimization: 3
+  RRTstarkConfigDefault4:
+    type: geometric::RRTstar
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    goal_bias: 0.05  # When close to goal select goal, with this probability? default: 0.05
+    delay_collision_checking: 1  # Stop collision checking as soon as C-free parent found. default 1
+    optimization: 4
+  RRTstarkConfigDefault5:
+    type: geometric::RRTstar
+    range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
+    goal_bias: 0.05  # When close to goal select goal, with this probability? default: 0.05
+    delay_collision_checking: 1  # Stop collision checking as soon as C-free parent found. default 1
+    optimization: 5
 main:
   planner_configs:
     - SBLkConfigDefault
@@ -66,5 +100,12 @@ main:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+    - RRTstarkConfigDefault1
+    - RRTstarkConfigDefault2
+    - RRTstarkConfigDefault3
+    - RRTstarkConfigDefault4
+    - RRTstarkConfigDefault5
   projection_evaluator: joints(lwr_arm_0_joint,lwr_arm_1_joint)
+  # projection_evaluator: joints(lwr_arm_0_joint,lwr_arm_6_joint)
   longest_valid_segment_fraction: 0.01
+  # longest_valid_segment_fraction: 0.05
